@@ -1,0 +1,24 @@
+<html>
+
+<head>
+</head>
+
+<body>
+
+	<h2>Loop Exercise</h2>
+
+	<table id="demo" border="1px" cellspacing="0" style="border: 5px solid green;">
+		
+	</table>
+
+	<script>
+	var text = "<tr><th>Number</th><th>Number x 10</th><th>Number ^ 2</th></tr>";
+	var i = 0;
+	for(i = 1;i <= 10; ++i )
+	{
+		text += "<tr><td>" + i + "</td><td>" + i*10 + "</td><td>" + i*i + "</td></tr>"
+	}
+	document.getElementById("demo").innerHTML = text;
+	</script>
+
+</html>
