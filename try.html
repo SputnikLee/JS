@@ -1,0 +1,34 @@
+<html>
+	<style>
+		table{
+			border:1px;
+			border:5px solid green;
+		}
+	</style>
+<head>
+</head>
+
+<body>
+
+	<h2>Loop Exercise</h2>
+	<div id="table"/>
+
+	<script>
+	var text;
+	var i,j;
+	for(j=0;j<=3;++j)
+	{
+		text += "<table><tr><th>Number</th><th>Number x 10</th><th>Number ^ 2</th></tr>";
+		for(i = 1;i <= 5; ++i)
+		{
+			text += "<tr><td>" + (j*5+i) + "</td><td>" + (j*5+i)*10 + "</td><td>" + (j*5+i)**2 +
+			"</td></tr>";
+			if(j*5+i==17) break;
+		}
+		text+="</table><br>";
+	}
+	
+	document.getElementById("table").innerHTML = text;
+	</script>
+
+</html>
