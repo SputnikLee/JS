@@ -164,14 +164,38 @@
 			sp = sp % 12-1;
             document.getElementById("lp").innerText = arr[sp-1] + " " + year;
 		}
-		function calculateRepayment(){
+		function calculateRepayment(k){
             var fname= document.getElementById("fname").value;
+            var la = Number(document.getElementById("la").value);
+            var fm = Number(document.getElementById("fm").value);
 			document.getElementById("demo2").innerText = "Dear " + fname + ",this is your loan calculation";
-
+			document.getElementById("ar").innerHTML = la.toFixed(2);
+			var n = la;
+            var ins = Number(getInsurance(k));
+            document.getElementById("in").innerText = ins;
+            for(var i=0 ; i<=fm ; ++i)
+			{
+			    if(i<=36) n += n*0.022;
+			    else if(i>36 && i<=60) n += n*0.033;
+			    else if(i < 84) n += n*0.044;
+			    else n += n*0.044;
+			}
+			la = n - la;
+			document.getElementById("ti").innerText = la.toFixed(2);
+            n += ins;
+            document.getElementById("tr").innerText = n.toFixed(2);
+            n /= fm;
+            document.getElementById("mp").innerText = n.toFixed(2);
 		}
 
 		function getInsurance(k){
-
+			switch(k)
+			{
+				case 0: return 0;
+				case 1: return 100;
+				case 2: return 150;
+				case 3: return 300;
+			}
 		} // use parameters and return the value from this function
 
 		function check(){
@@ -182,7 +206,6 @@
 			var nowmonth = date.getMonth() + 1;
             var la = document.getElementById("la").value;
             var fm = Number(document.getElementById("fm").value);
-            var la = Number(document.getElementById("la").value);
 			s=-1;
 			if(document.getElementById("fname").value.length == 0) {
 				text += "Please enter your First name.<br>";
@@ -239,8 +262,6 @@
                 document.getElementById("demo1").innerHTML = "success!";
 				calculateRepayment(s);
 				fortime(month,date);
-                getInsurance(s);
-                document.getElementById("ar").innerHTML = la.toFixed(2);
             }
 			else {
 				
