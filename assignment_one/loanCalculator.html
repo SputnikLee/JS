@@ -258,15 +258,13 @@
                 text += "Please choose option for insurance.<br>";
                 ana = 0;
 			}
-			if(ana == 1) {
+			if(ana == 1)
+			{
                 document.getElementById("demo1").innerHTML = "success!";
 				calculateRepayment(s);
 				fortime(month,date);
             }
-			else {
-				
-                document.getElementById("demo1").innerHTML = text;
-            }
+			else document.getElementById("demo1").innerHTML = text;
 		}
 
 	</script>
