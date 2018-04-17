@@ -2,11 +2,12 @@
 <head>
 	<title></title>
 	<style>
+		/*<--here is my css-->*/
 		h1,h2,h3{text-align: center;}
 		h1{color: white}
 		h3{color:yellow;line-height: 0px;}
 		table{
-			weith:800px;
+			width: 600px;
 			border:2px solid peachpuff;
 			border-collapse: collapse;
 		}
@@ -16,11 +17,13 @@
 		p{
 			color: white;
 			text-align: center;
+			font-size：20px；
 		}
 		.h2{color:green}
 		.div1{
 			position: relative;
 			background-color: lightblue;
+			width: 800px;
 			padding: 0px 30px 10px 30px;
 		}
 		.col3{colspan:3;}
@@ -28,6 +31,7 @@
 		.div2{
 			position: relative;
 			background-color: peachpuff;
+			width: 750px;
 		}
 		.div3{
 			position: relative;
@@ -51,7 +55,7 @@
 </head>
 <html>
 <body>
-	<div id="container" class="div1"><!-- HTML code here -->
+	<div id="container" class="div1"><!-- here is my html -->
 		<h2>Loan Calculator</h2>
 		<table class="table" align="center">
 			<tr>
@@ -128,11 +132,11 @@
 					<h3>Monthly Payments</h3>
 					<div class="div4"><h1 id="mp">NULL</h1></div>
 				</div>
-
+				yment</h3>
+				<div class="div4"><p id="fp">NULL</p></div>
+			</div>
 				<div class="div3">
-					<h3>First Payment</h3>
-					<div class="div4"><p id="fp">NULL</p></div>
-				</div>
+					<h3>First Pa
 				<div class="div3">
 					<h3>Last Payment</h3>
 					<div class="div4"><p id="lp">NULL</p></div>
@@ -145,15 +149,8 @@
 
 
 	<script>/* Javascript here*/
-		var fname= document.getElementById("fname").value;
-		var lname= document.getElementById("lname").value;
-		var em = document.getElementById("email").value;
-		var la = document.getElementById("la").value;
-		var fm = Number(document.getElementById("fm").value);
-		var sp = document.getElementById("sp").value;
-
 		var s=-1;
-		function fortime(sp,date){
+		function fortime(sp,date){//this function is used to output the First Payment and Last Payment
 			var arr=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 			var year = date.getFullYear();
             var fm = Number(document.getElementById("fm").value);
@@ -164,7 +161,7 @@
 			sp = sp % 12-1;
             document.getElementById("lp").innerText = arr[sp-1] + " " + year;
 		}
-		function calculateRepayment(k){
+		function calculateRepayment(k){//this function is used to calculate all the payments
             var fname= document.getElementById("fname").value;
             var la = Number(document.getElementById("la").value);
             var fm = Number(document.getElementById("fm").value);
@@ -173,12 +170,12 @@
 			var n = la;
             var ins = Number(getInsurance(k));
             document.getElementById("in").innerText = ins;
-            for(var i=0 ; i<=fm ; ++i)
+            for(var i=0 ; i < fm ; ++i)
 			{
 			    if(i<=36) n += n*0.022;
 			    else if(i>36 && i<=60) n += n*0.033;
 			    else if(i < 84) n += n*0.044;
-			    else n += n*0.044;
+			    else n += n*0.055;
 			}
 			la = n - la;
 			document.getElementById("ti").innerText = la.toFixed(2);
@@ -188,7 +185,7 @@
             document.getElementById("mp").innerText = n.toFixed(2);
 		}
 
-		function getInsurance(k){
+		function getInsurance(k){//this function can return how much the insurance needed
 			switch(k)
 			{
 				case 0: return 0;
@@ -198,7 +195,7 @@
 			}
 		} // use parameters and return the value from this function
 
-		function check(){
+		function check(){//this function is used to check the input is right or not
 			var ana = 1;
 			var date = new Date();
 			var text = "WARNING<br>";
@@ -206,7 +203,7 @@
 			var nowmonth = date.getMonth() + 1;
             var la = document.getElementById("la").value;
             var fm = Number(document.getElementById("fm").value);
-			s=-1;
+			var s=-1;
 			if(document.getElementById("fname").value.length == 0) {
 				text += "Please enter your First name.<br>";
 				ana = 0;
@@ -245,7 +242,7 @@
                 ana = 0;
             }
             var rad = document.getElementsByName("required");
-            for(var i=0;i<4;i++)
+            for(var i=0;i<4;i++)//to check which radio is checked
             {
                 if(rad[i].checked)
                 {
