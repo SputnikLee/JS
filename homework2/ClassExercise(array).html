@@ -1,0 +1,122 @@
+<html>
+<head>
+	<style>
+		.botton{
+			color:white;
+			background-color: gray;
+			border: 5px solid gray;
+			border-radius:5px;
+			margin: 5px 5px 5px 20px;
+		}
+		#input{
+			color: white;
+			background-color: gray;
+			margin: 5px 5px 5px 20px;
+			border: 5px solid gray;
+		}
+		body{
+			background-color: lightblue;
+		}
+		#div1{
+			position: absolute;
+			color: white;
+			left:300px;
+			top: 5px;
+		}
+		#div2{
+			background-color: chocolate;
+			padding: 0px 10px 0px 10px;
+		}
+		h3{text-align: center}
+		#NameNumber{
+			color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" id="input"><br><br>
+	<button onclick="addName()" class="botton">Add Name</button><br>
+	<button onclick="removeName()" class="botton">Remove Name</button><br>
+	<button onclick="sortAZ()" class="botton">Sort A-Z</button><br>
+	<button onclick="sortZA()" class="botton">Sort Z-A</button><br>
+	<div id="div1">
+		<div id="div2">
+			<h3>Name List</h3>
+			<p id="namelist"></p>
+			<br><br>
+		</div><br>
+		<div id="div2">
+			<h3>The List has <span id="NameNumber"></span> names;</h3>
+		</div>
+	</div>
+<script>
+	var namelist =["Jeremy","Rachel","Nina","Steven"] , text = "<ol>";
+	for(var i=0; i<namelist.length ; ++i)
+	{
+		text += "<li>" + namelist[i] + "</li>";
+	}
+	document.getElementById("namelist").innerHTML = text;
+	document.getElementById("NameNumber").innerText = namelist.length;
+	
+	function addName()
+	{
+		var addName = document.getElementById("input").value;
+		var text = "<ol>";
+		if(addName != "")
+		{
+			namelist.push(addName);
+		}
+		text = "<ol>";
+		for(var i=0; i<namelist.length ; ++i)
+		{
+			text += "<li>" + namelist[i] + "</li>";
+		}
+		document.getElementById("namelist").innerHTML = text;
+		document.getElementById("input").value = "";
+        document.getElementById("NameNumber").innerText = namelist.length;
+	}
+	function removeName()
+	{
+		var removeName = document.getElementById("input").value , text = "<ol>";
+		for(var i=0; i<namelist.length ; ++i)
+		{
+			if(removeName != namelist[i]) {
+                text += "<li>" + namelist[i] + "</li>";
+            }
+            else {
+			    for(var j=i ; j < namelist.length - 1; ++j)
+                {
+                    namelist[j] = namelist[j+1];
+                }
+                i--;
+                namelist.pop();
+            }
+		}
+        document.getElementById("namelist").innerHTML = text;
+        document.getElementById("input").value = "";
+        document.getElementById("NameNumber").innerText = namelist.length;
+	}
+	function sortAZ() {
+		namelist.sort();
+		var text = "<ol>";
+        for(var i=0; i<namelist.length ; ++i)
+        {
+            text += "<li>" + namelist[i] + "</li>";
+        }
+        document.getElementById("namelist").innerHTML = text;
+        document.getElementById("input").value = "	";
+	}
+    function sortZA() {
+        namelist.reverse();
+        var text = "<ol>";
+        for(var i=0; i<namelist.length ; ++i)
+        {
+            text += "<li>" + namelist[i] + "</li>";
+        }
+        document.getElementById("namelist").innerHTML = text;
+        document.getElementById("input").value = "";
+    }
+</script>
+
+</body>
+</html>
