@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<style>
+	input:hover, select:hover {border: solid 2px  yellow; }
+	#registerDiv {position: absolute; top:40px; height:380px; width:200px;  border: solid 3px blue; padding:5px;}
+	#confirmDiv {position: absolute; left: 250px; top:40px; height:330px; width:200px;  border: solid 3px blue; padding:5px;}
+	#hintBox {position: absolute; top:450px; height:80px; width:200px; border: solid 3px blue;}
+</style>
+
+<body>
+<div id="registerDiv">
+<h3>Registration</h3>
+
+First Name:  <br/>  <input type="text" onfocusin="firstNameIn()" onfocusout="firstNameOut()" id="firstName" /><br/>
+Family Name: <br/><input type="text" onfocusin="familyNameIn()" onfocusout="familyNameOut()" id="familyName" /><br/>
+Mobile Number: <br/><input type="text" id="mobNum" onfocusin="mobileNumberIn()" onfocusout="mobileNumberOut()" /><br/><br/>
+Grade:
+<select  id="grade" onfocusin="gradeIn()" onfocusout="gradeOut()">
+<option value="1">Year 1</option>
+<option value="2">Year 2</option>
+<option value="3">Year 3</option>
+<option value="4">Year 4</option>
+</select><br/>
+<select id="gender">
+<option value="male">Male</option>
+<option value="female">Female</option>
+</select><br>
+Year Born:<br/> <input type="text"  onfocusin="yearBornIn()" onfocusout="yearBornOut()" id="yearBorn"  />
+
+<p><button type="button" onclick="submitForm()">Submit Form</button></p>
+</div>
+
+<div id="hintBox">
+Hint and Tips 
+<p id="hintTip" ></p>
+</div>
+<div id="confirmDiv">
+<h3 >Verify Information</h3>
+<div id="verifyInfo">
+</div>
+
+<script>
+function firstNameIn() {
+    document.getElementById("hintTip").innerHTML = "Enter your first name";
+		firstName.style.background = "lightgray";
+}
+
+function familyNameIn() {
+    document.getElementById("hintTip").innerHTML = "Enter your family name";
+		familyName.style.background = "lightgray";
+}
+
+function mobileNumberIn() {
+    document.getElementById("hintTip").innerHTML = "Enter Mobile Number";
+		mobNum.style.background = "lightgray";
+}
+
+function gradeIn() {
+    document.getElementById("hintTip").innerHTML = "select your year";
+		grade.style.background = "lightgray";
+}
+
+function yearBornIn() {
+		document.getElementById("hintTip").innerHTML = "please only enter your year of birth";
+		yearBorn.style.background = "lightgray";
+}
+
+function firstNameOut() {
+		firstName.style.background = "none";
+}
+
+function familyNameOut() {
+		familyName.style.background = "none";
+}
+
+function mobileNumberOut() {
+		mobNum.style.background = "none";
+}
+
+function gradeOut() {
+		grade.style.background = "none";
+}
+
+function yearBornOut() {
+		yearBorn.style.background = "none";
+}
+
+function submitForm() {
+		ge = document.getElementById("gender").value;
+		fn = document.getElementById("firstName").value;
+		ln = document.getElementById("familyName").value;
+		mn = document.getElementById("mobNum").value;
+		gr = document.getElementById("grade").value;
+		yr = document.getElementById("yearBorn").value;
+		if( ge == "male"){
+			thetitle="Mr,";
+			gender="Male";
+		}
+		else{
+			thetitle = "Ms,";
+			gender="Female";
+		}
+		document.getElementById("verifyInfo").innerHTML = "Dear <b>" + thetitle + fn + " " + ln + "</b><br/> thank you for registering, we will contact you on " + mn + "<br/><br/> Gender:" + gender + "<br> Grade: " + gr +"<br/> Born: " + yr + "<br/><br/><button>Confirm</button>" ;
+		document.getElementById("hintTip").innerHTML = "Form submitted";
+
+}
+
+</script>
+
+</body>
+</html>
