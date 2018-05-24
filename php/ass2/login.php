@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         {
             while($row = $result -> fetch_assoc())
             {
-                if($row["username"]==$name && $row["password"]==$psw)
+                if(($row["username"]==$name||$row["id_number"]==$name)&& $row["password"]==$psw)
                 {
                     $mes = "<br><h3>Here is your information:</h3>
                     <table class='table' border='1px'>
@@ -83,7 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 <div class="div1">
     <center><form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        Username:<br><input type="text" name="username" value="<?php echo $name?>"><br>
+        Username or ID:<br><input type="text" name="username" value="<?php echo $name?>"><br>
             <br>
         Password:<br><input type="password" name="password" value="<?php echo $psw?>"><br><br>
         <input type="submit" name="submit" value="submit"><br>
